@@ -1,9 +1,6 @@
 PHP Html Parser
 ==========================
-
-[![Build Status](https://travis-ci.org/paquettg/php-html-parser.png)](https://travis-ci.org/paquettg/php-html-parser)
-[![Coverage Status](https://coveralls.io/repos/paquettg/php-html-parser/badge.png)](https://coveralls.io/r/paquettg/php-html-parser)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/paquettg/php-html-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/paquettg/php-html-parser/?branch=master)
+[Removed Require of Guzzlehttp by wealding for personal use]
 
 PHPHtmlParser is a simple, flexible, html parser which allows you to select tags using any css selector, like jQuery. The goal is to assist in the development of tools which require a quick, easy way to scrap html, whether it's valid or not!
 
@@ -13,7 +10,7 @@ Install
 Install the latest version using composer.
 
 ```bash
-$ composer require paquettg/php-html-parser
+$ composer require wealding/php-html-parser
 ```
 
 This package can be found on [packagist](https://packagist.org/packages/paquettg/php-html-parser) and is best loaded using [composer](http://getcomposer.org/). We support php 7.2, 7.3, and 7.4.
@@ -93,20 +90,7 @@ $dom->loadFromUrl('http://google.com');
 $html = $dom->outerHtml; // same result as the first example
 ```
 
-loadFromUrl will, by default, use an implementation of the `\Psr\Http\Client\ClientInterface` to do the HTTP request and a default implementation of `\Psr\Http\Message\RequestInterface` to create the body of the request. You can easily implement your own version of either the client or request to use a custom HTTP connection when using loadFromUrl.
-
-```php
-// Assuming you installed from Composer:
-require "vendor/autoload.php";
-use PHPHtmlParser\Dom;
-use App\Services\MyClient;
-
-$dom = new Dom;
-$dom->loadFromUrl('http://google.com', null, new MyClient());
-$html = $dom->outerHtml;
-```
-
-As long as the client object implements the interface properly, it will use that object to get the content of the url.
+loadFromUrl will, by default, changed to file_get_contents. 
 
 Loading Strings
 ---------------
